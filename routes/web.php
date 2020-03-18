@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@guest');
+
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('login/okta/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('/home', 'HomeController@index')->name('home');

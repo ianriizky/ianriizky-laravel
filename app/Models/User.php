@@ -16,24 +16,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'token',
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * Get the name of the unique identifier for the user.
      *
-     * @var array
+     * @return string
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function getAuthIdentifierName()
+    {
+        return 'email';
+    }
 }
